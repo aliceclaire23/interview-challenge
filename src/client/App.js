@@ -1,3 +1,4 @@
+import axios from 'axios';
 import React, { useState } from 'react';
 import './App.css';
 import MenuBuilder from './Components/MenuBuilder';
@@ -13,11 +14,14 @@ const App = () => {
     setSelectedItems(currentItems);
   };
 
-  fetch("/api/items")
-            .then(res =>res.json()
-            .then(({items}) => {
-                setItems(items)
-            }));
+  axios.get('/api/items')
+       .then(function ({data:{items}}) {
+         setItems(items);
+        })
+        .catch(function (error) {
+          // TODO: mock log in tests 
+          // console.log(error);
+        });
 
   return (
     <div className="wrapper">
