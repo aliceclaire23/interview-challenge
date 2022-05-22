@@ -2,7 +2,7 @@ import React from 'react';
 import DietaryTypeLabel from '../DietaryTypeLabel';
 
 export default () => (
-  <div className="menu-summary">
+  <div className="menu-summary" data-testid="menu-summary">
     <div className="container">
       <div className="row">
         <div className="col-6 menu-summary-left">

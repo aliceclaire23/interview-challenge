@@ -1,11 +1,14 @@
-import React from 'react'
 import { render, screen } from '@testing-library/react'
+import React from 'react'
 import App from './App'
 
-// Example test
 describe('App tests', () => {
-    it('renders a message', () => {
+    it('renders menu summary component', () => {
         render(<App />)
-        expect(screen.getByText('6 items')).toBeInTheDocument()
+        expect(screen.getByTestId('menu-summary')).toBeInTheDocument()
+    }),
+    it('renders menu builder component', () => {
+        render(<App />)
+        expect(screen.getByTestId('menu-builder')).toBeInTheDocument()
     })
 })

@@ -2,7 +2,7 @@ import React from 'react';
 import ItemList from '../ItemList';
 
 export default () => (
-  <div className="container menu-builder">
+  <div className="container menu-builder" data-testid="menu-builder">
     <div className="row">
       <div className="col-4">
         <div className="filters">
