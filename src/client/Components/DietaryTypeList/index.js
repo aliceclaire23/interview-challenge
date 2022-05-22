@@ -1,10 +1,10 @@
 import React from 'react';
 import DietaryTypeLabel from '../DietaryTypeLabel';
 
-export default () => (
+export default ({dietaries}) => (
   <p>
-    <DietaryTypeLabel dietary='ve' />
-    <DietaryTypeLabel dietary='v' />
-    <DietaryTypeLabel dietary='n!' />
+    { dietaries && dietaries.map(dietary => (
+      <DietaryTypeLabel dietary={dietary} key={dietary} />
+    ))}
   </p>
 );
