@@ -13,6 +13,11 @@ const App = () => {
     currentItems.push(item);
     setSelectedItems(currentItems);
   };
+  
+  function removeItem(item) {
+    const filteredItems = selectedItems.filter(currentItem => currentItem.id !== item.id);
+    setSelectedItems(filteredItems);
+  };
 
   axios.get('/api/items')
        .then(function ({data:{items}}) {
@@ -26,7 +31,7 @@ const App = () => {
   return (
     <div className="wrapper">
       <MenuSummary />
-      <MenuBuilder items={items} selectedItems={selectedItems} selectItem={selectItem} />
+      <MenuBuilder items={items} selectedItems={selectedItems} selectItem={selectItem} removeItem={removeItem} />
     </div>
   )
 };

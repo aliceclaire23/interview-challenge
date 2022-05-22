@@ -1,7 +1,7 @@
 import React from 'react';
 import ItemList from '../ItemList';
 
-export default ({items, selectedItems, selectItem}) => (
+export default ({items, selectedItems, selectItem, removeItem}) => (
   <div className="container menu-builder" data-testid="menu-builder">
     <div className="row">
       <div className="col-4">
@@ -12,7 +12,7 @@ export default ({items, selectedItems, selectItem}) => (
       </div>
       <div className="col-8">
         <h2>Menu preview</h2>
-        <ItemList className="menu-preview" items={selectedItems} withButton />
+        <ItemList className="menu-preview" items={selectedItems} removeItem={removeItem} withButton />
       </div>
     </div>
   </div>
