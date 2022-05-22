@@ -7,6 +7,7 @@ import MenuSummary from './Components/MenuSummary';
 const App = () => {
   const [items, setItems] = useState([]);
   const [selectedItems, setSelectedItems] = useState([]);
+  const [filter, setFilter] = useState('');
 
   function selectItem(item) {
     const currentItems = selectedItems.slice();
@@ -19,19 +20,30 @@ const App = () => {
     setSelectedItems(filteredItems);
   };
 
-  axios.get('/api/items')
-       .then(function ({data:{items}}) {
-         setItems(items);
-        })
-        .catch(function (error) {
-          // TODO: mock log in tests 
-          // console.log(error);
-        });
+  axios.get('/api/items', {
+    params: {
+      filter
+    }
+  })
+  .then(function ({ data }) {
+    setItems(data.items);
+  })
+  .catch(function (error) {
+    // TODO: mock log in tests 
+    // console.log(error);
+  });
 
   return (
     <div className="wrapper">
       <MenuSummary />
-      <MenuBuilder items={items} selectedItems={selectedItems} selectItem={selectItem} removeItem={removeItem} />
+      <MenuBuilder 
+        items={items} 
+        filter={filter} 
+        setFilter={setFilter} 
+        selectedItems={selectedItems} 
+        selectItem={selectItem} 
+        removeItem={removeItem} 
+      />
     </div>
   )
 };
