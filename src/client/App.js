@@ -35,7 +35,7 @@ const App = () => {
 
   return (
     <div className="wrapper">
-      <MenuSummary />
+      <MenuSummary selectedItems={selectedItems} />
       <MenuBuilder 
         items={items} 
         filter={filter} 

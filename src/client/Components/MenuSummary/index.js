@@ -1,12 +1,12 @@
 import React from 'react';
 import DietaryTypeLabel from '../DietaryTypeLabel';
 
-export default () => (
+export default ({selectedItems}) => (
   <div className="menu-summary" data-testid="menu-summary">
     <div className="container">
       <div className="row">
         <div className="col-6 menu-summary-left">
-          <span>6 items</span>
+          <span>{selectedItems.length} items</span>
         </div>
         <div className="col-6 menu-summary-right">
           6x <DietaryTypeLabel dietary='ve' />
