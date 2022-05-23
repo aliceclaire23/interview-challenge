@@ -10,14 +10,16 @@ const App = () => {
   const [filter, setFilter] = useState('');
 
   function selectItem(item) {
-    const currentItems = selectedItems.slice();
-    currentItems.push(item);
-    setSelectedItems(currentItems);
+    setSelectedItems([...selectedItems, item]);
+    
+    setItems(items.filter(currentItem => currentItem !== item))
   };
   
   function removeItem(item) {
     const filteredItems = selectedItems.filter(currentItem => currentItem.id !== item.id);
     setSelectedItems(filteredItems);
+
+    setItems([item, ...items]);
   };
 
   axios.get('/api/items', {
@@ -26,7 +28,8 @@ const App = () => {
     }
   })
   .then(function ({ data }) {
-    setItems(data.items);
+    const filteredItems = data.items.filter(item => !selectedItems.some(selected => selected.id === item.id))
+    setItems(filteredItems);
   })
   .catch(function (error) {
     // TODO: mock log in tests 
