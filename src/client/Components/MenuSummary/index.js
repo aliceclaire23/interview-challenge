@@ -1,7 +1,7 @@
 import React from 'react';
 import DietaryTypeLabel from '../DietaryTypeLabel';
 
-const MenuSummary = ({selectedItems}) => {
+export default ({selectedItems}) => {
   // TODO: get dynamic list of types from the data
   const dietaryTypes = [ "v", "ve", "df", "gf", "n!", "rsf" ];
   const dietaries = dietaryTypes.map(type => ({
@@ -28,5 +28,3 @@ const MenuSummary = ({selectedItems}) => {
     </div>
   )
 };
-
-export default MenuSummary;

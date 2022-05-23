@@ -4,7 +4,7 @@ import './App.css';
 import MenuBuilder from './Components/MenuBuilder';
 import MenuSummary from './Components/MenuSummary';
 
-const App = () => {
+export default () => {
   const [items, setItems] = useState([]);
   const [selectedItems, setSelectedItems] = useState([]);
   const [filter, setFilter] = useState('');
@@ -52,5 +52,3 @@ const App = () => {
     </div>
   )
 };
-
-export default App;
