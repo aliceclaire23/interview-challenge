@@ -1,5 +1,5 @@
 import axios from 'axios';
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import './App.css';
 import MenuBuilder from './Components/MenuBuilder';
 import MenuSummary from './Components/MenuSummary';
@@ -22,19 +22,21 @@ const App = () => {
     setItems([item, ...items]);
   };
 
-  axios.get('/api/items', {
-    params: {
-      filter
-    }
-  })
-  .then(function ({ data }) {
-    const filteredItems = data.items.filter(item => !selectedItems.some(selected => selected.id === item.id))
-    setItems(filteredItems);
-  })
-  .catch(function (error) {
-    // TODO: mock log in tests 
-    // console.log(error);
-  });
+  useEffect(() => {
+    axios.get('/api/items', {
+      params: {
+        filter
+      }
+    })
+    .then(function ({ data }) {
+      const filteredItems = data.items.filter(item => !selectedItems.some(selected => selected.id === item.id))
+      setItems(filteredItems);
+    })
+    .catch(function (error) {
+      // TODO: mock log in tests 
+      // console.log(error);
+    });
+  }, [filter]);
 
   return (
     <div className="wrapper">
